@@ -1,0 +1,118 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# import React, { useEffect, useState } from 'react';
+# import { Icon } from '@iconify/react';
+# import Cards from './Cards';
+# import { data } from './data';
+# import Switcher from './Component/Switcher';
+
+# const Users = () => {
+#   const [users, setUsers] = useState(data);
+#   const [input, setInput] = useState('');
+#   const [paginate, setPaginate] = useState(1);
+#   const [select, setSelect] = useState('');
+#   const [doPaginate, setDoPaginate] = useState(true);
+#   const [show, setShow] = useState(true);
+
+#   const isActivePage = (pageNumber) => {
+#     return paginate === pageNumber ? 'active-button' : '';
+#   };
+
+
+#   useEffect(() => {
+#     const filteredUsers = data.filter((user) => {
+#       const generalSelection = select === '' &&
+#       (user?.name?.toLowerCase().includes(input?.toLowerCase()) ||
+#       user?.gender?.toLowerCase().includes(input?.toLowerCase()) ||
+#       (user?.age && user.age.toString().includes(input)));
+#       const genderFilter = (select === 'male' || select === 'female') && user?.gender?.toLowerCase() === input?.toLowerCase();
+#       const ageFilter = select === 'age' && Number(user.age) === Number(input);
+#       const nameFilter = select === 'name' && user?.name?.toLowerCase().includes(input?.toLowerCase());
+#       return genderFilter || ageFilter || nameFilter || generalSelection;
+#     });
+
+#     const shouldPaginate = (select === 'male' || select === 'female') || filteredUsers.length > 5;
+#     setDoPaginate(shouldPaginate);
+
+#     if (shouldPaginate) {
+#       const itemsPerPage = 5;
+#       const startIndex = (paginate - 1) * itemsPerPage;
+#       const endIndex = startIndex + itemsPerPage;
+#       setUsers(filteredUsers.slice(startIndex, endIndex));
+#       setShow(false);
+#     } else {
+#       if (!input) {
+#         setUsers(data);
+#       } else {
+#         setUsers(filteredUsers);
+#       }
+#       setDoPaginate(false);
+#       setShow(true);
+#     }
+#   }, [input, select, paginate]);
+
+
+
+
+
+#   return (
+#     <div>
+#       <div className="bg-gray-100 dark:bg-[#081229] h-full">
+#         <div className="flex justify-center items-center">
+#           <span className='text-center text-3xl dark:text-white font-bold p-2 underline'>Fetch Users</span>
+#           <span className=""><Switcher /></span>
+#         </div>
+#         <div className="m-2 flex flex-col justify-center items-center">
+#           <input
+#             type="text"
+#             placeholder='search github users'
+#             value={input}
+#             onChange={(e) => setInput(e.target.value)}
+#             className='w-1/2 p-2 focus:outline-none focus:shadow-md border-gray-300 border-[1px] rounded-md'
+#           />
+#           <br />
+#           <select className='w-full max-w-[15rem] p-2 focus:outline-none focus:shadow-md border-gray-300 border-[1px] rounded-md' value={select} onChange={(e) => setSelect(e.target.value)}>
+#             <option value="">--Select--</option>
+#             <option value="male">male</option>
+#             <option value="female">female</option>
+#             <option value="age">age</option>
+#             <option value="name">name</option>
+#           </select>
+#         </div>
+#         <Cards data={users} />
+#         {doPaginate && <div className="p-2 flex justify-center items-center">
+#           <Icon icon="ic:round-arrow-left" color="blue" className='cursor-pointer m-2 text-4xl bg-gray-300 rounded-full hover:bg-gray-400' onClick={() => setPaginate(show && paginate === 1 ? 3 : paginate === 1 ? 2 : paginate - 1)} />
+#           <button onClick={() => setPaginate(1)} value={paginate} className={`p-2 border-[1px] rounded-md font-semibold text-center m-2 hover:bg-blue-700 ${isActivePage(1)}`}>1</button>
+#           <button onClick={() => setPaginate(2)} value={paginate} className={`p-2 border-[1px] rounded-md font-semibold text-center m-2 hover:bg-blue-700 ${isActivePage(2)}`}>2</button>
+#           {show && <button onClick={() => setPaginate(3)} value={paginate} className={`p-2 border-[1px] rounded-md font-semibold text-center m-2 hover:bg-blue-700 ${isActivePage(3)}`}>3</button>}
+#           <Icon icon="ic:round-arrow-right" color="blue" className='cursor-pointer m-2 text-4xl bg-gray-300 hover:bg-gray-400 rounded-full' onClick={() => setPaginate(show && paginate === 3 ? 1 : paginate === 2 ? 1 : paginate + 1)} />
+#         </div>}
+#       </div>
+#     </div>
+#   );
+# };
+
+# export default Users;
+.vercel

@@ -1,0 +1,21 @@
+[
+  {
+      "title": "Our Projects",
+      "image": "images/editorium.png",
+      "description": "Our specialist teams have built an enviable track record at every scale, in all sectors, bringing shared knowledge, understanding, expertise and best practice.",
+      "more": "Find out more ..."
+  },
+  {
+      "title": "Our People",
+      "image": "images/employee.png",
+      "description": "We’re an established independent business that retains relationships through our experience, technical excellence, shared knowledge and nurturing talent.",
+      "more": "Find out more ..."
+  },
+  {
+      "position": "right",
+      "title": "Our Insight",
+      "image": "images/beach.png",
+      "description": "We continue our commitment to sharing industry knowledge by providing technical and legal updates across a comprehensive spread of topics through the Watts Pocket Handbook, on-line articles and thought leadership.",
+      "more": "Find out more ..."
+  }
+]
